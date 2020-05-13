@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donacije za Olgomobil</title>
+  </head>
+  <body>
+    <img height="300px" src="slika.png" alt="" />
+    <h1>
+      Donirajte ovoj osopi,<br />
+      piletu lepom,<br />
+      kes za kola!!!
+    </h1>
+    <button onclick="clickCounter()" type="button">Doniraj!</button>
+    <h3>Trenutni bilans stanja:</h3>
+    <div id="result"></div>
+    <img src="" id="kola" alt="" />
+    <div id="gotovo"></div>
+    <script>
+      function clickCounter() {
+        if (typeof Storage !== "undefined") {
+          if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount) + 1;
+            if (localStorage.clickcount == 1000) {
+              document.getElementById("kola").src = "kola.png";
+              document.getElementById("gotovo").innerHTML =
+                "CESTITKE DOBILI STE KOLA";
+            }
+          } else {
+            localStorage.clickcount = 1;
+          }
+          document.getElementById("result").innerHTML =
+            "Stanje na racunu " + localStorage.clickcount + "evry";
+        } else {
+          document.getElementById("result").innerHTML =
+            "Sorry, your browser does not support web storage...";
+        }
+      }
+    </script>
+  </body>
+</html>
